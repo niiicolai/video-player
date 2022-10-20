@@ -1,0 +1,141 @@
+body {
+    padding: 0;
+    margin: 0;
+    background: #000;
+}
+
+/* Video player specific */
+
+.video-player {
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.video-player .pd-20 {
+    padding: 20px;
+}
+
+.video-player .top {
+    height: 40px;
+}
+
+.video-player video {
+    width: 100%;
+}
+
+.video-player .video-options {
+    height: 30px;
+    width: 200px;
+}
+
+.video-player .timeline {
+    width: 100%;
+}
+
+.video-player .video-information h1 {
+    margin-top: 0;
+}
+
+/* Buttons */
+
+.video-player .btn  {
+    padding: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Text properties */
+
+.video-player .txt-center  {
+    text-align: center;
+}
+
+.video-player .txt-white  {
+    color: #fff;
+}
+
+.video-player .txt-white-alpha  {
+    color: rgba(255, 255, 255, 0.493);
+}
+
+.video-player .txt-white-hover:hover  {
+    color: #fff;
+}
+
+.video-player .txt-white-alpha-hover:hover  {
+    color: rgba(255, 255, 255, 0.493);
+}
+
+/* Font size properties */
+
+.video-player .font-m  {
+    font-size: medium;
+}
+
+.video-player .font-xl  {
+    font-size: x-large;
+}
+
+/* Positions properties */
+
+.video-player .relative {
+    position: relative;
+}
+
+.video-player .absolute {
+    position: absolute;
+}
+
+.video-player .absolute-center {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;                
+}
+
+.video-player .absolute-bottom {
+    bottom: 0;
+    left: 0;
+    right: 0;              
+}
+
+/* Flex properties */
+
+.video-player .flex  {
+    display: flex;
+}
+
+.video-player .space-between  {
+    justify-content: space-between;
+}
+
+.video-player .align-center  {
+    align-items: center;
+}
+
+.video-player .gp-20  {
+    gap: 20px;
+}
+
+/* Data properties */
+
+.video-player *[data-state=maximized] .top {    
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.video-player *[data-state=none] {
+    display: none;
+}
+
+.video-player *[data-state=block] {
+    display: block;
+}
+
+.video-player *[data-state=flex] {
+    display: flex;
+}

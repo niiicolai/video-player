@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="style.css">
+        <script src="video-player.js"></script>
+  </head>
+  <body>
+
+    <div class="video-player">
+
+      <div id="fullscreen-container" data-state="minimized">
+
+        <!--
+          Top section:
+          - Display page navigation & extra video options.
+          - Fx speed, volume, etc.
+        -->
+        <div class="top flex space-between align-center pd-20">
+          <!-- Page Navigation -->
+          <nav class="video-hover-event" data-state="flex">
+            <!-- Demo link -->
+            <a class="btn txt-white txt-white-alpha-hover font-m">
+              <i class="fa-solid fa-xmark"></i>
+            </a>
+          </nav>
+
+          <!-- Addition video options -->
+          <div class="video-hover-event" data-state="flex">
+            <!-- Playback speed button -->
+            <button class="btn txt-white txt-white-alpha-hover font-m" onclick="VideoPlayer.toggleVisibility('playback-speed-container')">
+              <i class="fa-regular fa-clock"></i>
+            </button>
+            
+            <!-- Playback speed slider -->
+            <div class="btn txt-white txt-white-alpha-hover font-m" id="playback-speed-container" data-state="none">
+              <input type="range" min="1" max="10" value="1" id="playback-speed-slider">
+            </div>
+
+            <!-- Volume button -->
+            <button class="btn txt-white txt-white-alpha-hover font-m" onclick="VideoPlayer.toggleVisibility('volume-container')">
+              <i class="fa-solid fa-volume-low"></i>
+            </button>
+            
+            <!-- Volume slider -->
+            <div class="btn txt-white txt-white-alpha-hover font-m" id="volume-container" data-state="none">
+              <input type="range" min="0" max="100" value="50" id="volume-slider">
+            </div>
+
+            <!-- Fullscreen button -->
+            <button class="btn txt-white txt-white-alpha-hover font-m" id="fullscreen">
+              <i class="fa-solid fa-maximize"></i>
+            </button>
+          </div>
+        </div>
+        
+        <!--
+          Video container:
+          - Display the video element, video options, 
+          timeline, and current time information.
+        -->
+        <div class="video-container relative">
+          <!-- Video element -->
+          <video id="video">
+            <source src="Demo-video.mp4" type="video/mp4">
+            <p>Your browser does not support the video format.</p>
+          </video>
+
+          <div class="video-options flex space-between absolute absolute-center video-hover-event" data-state="flex">
+            <!-- Rewind button -->
+            <button class="btn txt-white-alpha txt-white-hover font-xl" id="rewind" data-state="-10">
+              <span>10</span>
+              <i class="fa-solid fa-arrow-rotate-left"></i>
+            </button>
+
+            <!-- Play/pause button -->
+            <button class="btn txt-white-alpha txt-white-hover font-xl" id="play">
+              <i class="fa-solid fa-play"></i>
+            </button>
+
+            <!-- Foward button -->
+            <button class="btn txt-white-alpha txt-white-hover font-xl" id="forward" data-state="10">
+              <i class="fa-solid fa-arrow-rotate-right"></i>
+              <span>10</span>
+            </button>
+          </div>
+
+          <div class="flex align-center gp-20 absolute absolute-bottom pd-20 video-hover-event" data-state="flex">
+            <!-- Timeline -->
+            <progress class="timeline" max="100" value="0" id="timeline"></progress>
+
+            <!-- Current time info -->
+            <span class="txt-white" id="current-time">15:15:15</span>
+          </div>
+        </div>
+
+      </div>
+      
+      <!-- 
+        Bottom section:
+        - Display additional video information.
+        - Fx genre, duration, etc.
+      -->
+      <div class="video-information txt-white pd-20">
+        
+        <!-- Video title -->
+        <h1>Pro Skaters</h1>
+        <hr>
+        <div>
+          <!-- Genre -->
+          <span>Documentary</span>
+          <span>|</span>
+
+          <!-- Duration -->
+          <span>2 Hours 10 Minutes</span>
+          <span>|</span>
+
+          <!-- Episode -->
+          <span>Episode 1/2</span>
+          </div>
+                
+          <!-- Video description -->
+          <p>This episode shows the amazing skater team ...</p>
+      </div>
+    </div>
+
+    <script>
+      VideoPlayer.setVideoElement('video');
+      VideoPlayer.setPlaybackSpeedEvent('playback-speed-slider');
+      VideoPlayer.setVolumeEvent('volume-slider');
+      VideoPlayer.setFullscreenEvent('fullscreen', 'fullscreen-container');
+      VideoPlayer.setCurrentTimeEvent('rewind');
+      VideoPlayer.setCurrentTimeEvent('forward');
+      VideoPlayer.setPlayPauseEvent('play');
+      VideoPlayer.setCurrentTimeInfoEvent('current-time');
+      VideoPlayer.setTimelineEvent('timeline');
+      VideoPlayer.setOnHoverEvent('fullscreen-container');
+    </script>
+  </body>
+</html>
